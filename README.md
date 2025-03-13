@@ -1,0 +1,2 @@
+# Reading_Tracker
+一个基于ttkbootstrap，帮助记录和分析读书进度的GUI
