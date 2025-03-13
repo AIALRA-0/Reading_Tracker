@@ -7,7 +7,7 @@ ReadingTracker 是一个 **Tkinter + ttkbootstrap** 构建的图形界面（GUI�
 
 🚀 **主界面截图**  
 
-![image](https://github.com/user-attachments/assets/1b48a7a6-cc4a-48b9-8ca0-92f0b7d0eddd)
+![image](https://github.com/user-attachments/assets/6bcba4eb-8a23-4ec2-82ce-35eb3e897c4b)
 
 ---
 
