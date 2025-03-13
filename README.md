@@ -21,7 +21,6 @@ ReadingTracker 是一个 **Tkinter + ttkbootstrap** 构建的图形界面（GUI�
 ![image](https://github.com/user-attachments/assets/4c7b7be2-6beb-4c46-be17-8c3537a9358e)
 
 ✅ **📈 进度可视化**：动态进度条，直观显示当前阅读进度。  
-![image](https://github.com/user-attachments/assets/780cd04d-8b09-4129-87a9-fe52b164eda6)
 
 ✅ **📅 预计完成时间**：根据平均阅读速度预测完成日期，助力阅读规划。  
 
