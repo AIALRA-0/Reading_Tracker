@@ -14,17 +14,18 @@ ReadingTracker 是一个 **Tkinter + ttkbootstrap** 构建的图形界面（GUI�
 ## 🎯 **功能特点**
 ✅ **📖 添加书籍**：输入书名、总页数、起始页数、目标完成日期，自动计算每日阅读目标。 
 
-![image](https://github.com/user-attachments/assets/c8ed2274-9852-4e8b-b48d-498a502062de)
+![image](https://github.com/user-attachments/assets/63b732cd-0241-48c2-9f8c-8a75ff9684b0)
 
 ✅ **📊 进度记录**：每日输入当前阅读页数，系统会自动计算阅读进度，并显示是否达标。  
 
-![image](https://github.com/user-attachments/assets/95566067-80a6-4efd-8014-31114baa8dda)
+![image](https://github.com/user-attachments/assets/4c7b7be2-6beb-4c46-be17-8c3537a9358e)
 
 ✅ **📈 进度可视化**：动态进度条，直观显示当前阅读进度。  
+![image](https://github.com/user-attachments/assets/780cd04d-8b09-4129-87a9-fe52b164eda6)
 
 ✅ **📅 预计完成时间**：根据平均阅读速度预测完成日期，助力阅读规划。  
 
-![image](https://github.com/user-attachments/assets/a2f2c92a-9f55-4716-a644-74a893ad87ab)
+![image](https://github.com/user-attachments/assets/e1102e3c-ed3b-47f3-b77d-31b261691897)
 
 ✅ **🖌️ 多主题切换**：支持 `ttkbootstrap` 主题更换，让界面风格更符合你的喜好。  
 
