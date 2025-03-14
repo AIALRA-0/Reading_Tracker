@@ -1,6 +1,7 @@
 # 📚 **ReadingTracker - 读书进度追踪器**  
 
 ReadingTracker 是一个 **Tkinter + ttkbootstrap** 构建的图形界面（GUI）应用，帮助**记录并分析**读书进度，让阅读更有规划、更高效！🚀  
+* 目前仅为个人使用，可能存在bug和错误，敬请谅解
 
 ---
 ## 📸 **界面预览**
