@@ -185,7 +185,10 @@ def update_display():
         records = info.get("records", [])
         
         last_read = max(records[-1]["page"], init_read_pages) if records else init_read_pages
-        elapsed_days = max((datetime.datetime.today() - datetime.datetime.strptime(start_date, "%Y-%m-%d")).days, 1)
+        elapsed_days = max((datetime.datetime.today() - datetime.datetime.strptime(start_date, "%Y-%m-%d")).days, 1) + 1
+        print(last_read)
+        print(init_read_pages)
+        print(elapsed_days)
         avg_speed = (last_read - init_read_pages) / elapsed_days if elapsed_days > 0 else 0
         expected_finish = datetime.datetime.today() + datetime.timedelta(days=(total_pages - last_read) / avg_speed) if avg_speed > 0 else "未开始"
         progress = (last_read / total_pages) * 100 if total_pages > 0 else 0
