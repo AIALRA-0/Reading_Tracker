@@ -162,6 +162,10 @@ def update_user_style():
         padding=(10, 5)  # 统一按钮的 padding
     )
 
+def schedule_auto_refresh():
+    update_display()
+    root.after(60000, schedule_auto_refresh)  # 每隔60秒刷新一次
+    
 def update_display():
     for widget in progress_frame.winfo_children():
         widget.destroy()
@@ -281,6 +285,7 @@ progress_frame = tb.LabelFrame(root, text="进度显示", bootstyle="primary")
 progress_frame.pack(fill="both", expand=True, padx=10, pady=5)
 
 update_display()
+schedule_auto_refresh()
 root.update_idletasks()
 root.geometry("")
 root.mainloop()
