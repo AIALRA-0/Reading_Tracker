@@ -111,31 +111,36 @@ def delete_book():
 def log_progress():
     title = book_var.get()
     pages = current_page_entry.get()
-    if not book_var.get() or book_var.get() == "请选择书籍":
-            messagebox.showerror("错误", "请选择一本书籍！")
-            return
-    if title and pages.isdigit():
-        title = book_var.get()
-        pages = int(pages)
-        last_read = data[title]["records"][-1]["page"] if data[title]["records"] else data[title]["init_read_pages"]
-        
-        if pages < last_read:
-            messagebox.showerror("错误", "当前页数不能小于已读页数！")
-            return
-        if pages > data[title]["total_pages"]:
-            messagebox.showerror("错误", "当前页数不能超过总页数！")
-            return
-        
-        today = str(datetime.date.today())
-        if data[title]["records"]:
-            data[title]["records"][-1]["page"] = pages  # 覆盖最后一次记录
-        else:
-            data[title]["records"].append({"date": today, "page": pages})  # 第一次记录
-        
-        save_data()
-        update_display()
-    else:
+    
+    if not title or title == "请选择书籍":
+        messagebox.showerror("错误", "请选择一本书籍！")
+        return
+    if not pages.isdigit():
         messagebox.showerror("错误", "请输入有效的页数！")
+        return
+
+    pages = int(pages)
+    today = str(datetime.date.today())
+    book_info = data[title]
+    records = book_info["records"]
+
+    last_read = records[-1]["page"] if records else book_info["init_read_pages"]
+    if pages < last_read:
+        messagebox.showerror("错误", "当前页数不能小于已读页数！")
+        return
+    if pages > book_info["total_pages"]:
+        messagebox.showerror("错误", "当前页数不能超过总页数！")
+        return
+
+    # 判断是否已经有今天的记录
+    if records and records[-1]["date"] == today:
+        records[-1]["page"] = pages  # 更新今天的记录
+    else:
+        records.append({"date": today, "page": pages})  # 添加新记录
+
+    save_data()
+    update_display()
+
 
 def update_user_style():
     # 重新应用自定义样式
@@ -185,7 +190,19 @@ def update_display():
         expected_finish = datetime.datetime.today() + datetime.timedelta(days=(total_pages - last_read) / avg_speed) if avg_speed > 0 else "未开始"
         progress = (last_read / total_pages) * 100 if total_pages > 0 else 0
         prev_read = records[-2]["page"] if len(records) > 1 else init_read_pages
-        is_on_track = "✅ 达标" if (last_read - prev_read) >= target_daily else "❌ 未达标"
+        today = str(datetime.date.today())
+        today_record = next((r for r in records[::-1] if r["date"] == today), None)
+        last_record_before_today = next((r for r in records[::-1] if r["date"] != today), None)
+        
+        # 如果今天有记录，提取今天读到的页数
+        if today_record:
+            today_read = today_record["page"]
+            last_read_before_today = last_record_before_today["page"] if last_record_before_today else info["init_read_pages"]
+            daily_progress = today_read - last_read_before_today
+        else:
+            daily_progress = 0
+        
+        is_on_track = "✅ 达标" if daily_progress >= target_daily else "❌ 未达标"
 
         
         tb.Label(progress_frame, text=f"{title}", font=("微软雅黑", 12, "bold"), bootstyle="primary").grid(row=row, column=0, padx=5, pady=5, sticky="w")
